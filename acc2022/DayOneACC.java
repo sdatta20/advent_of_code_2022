@@ -10,7 +10,7 @@ public class DayOneACC {
 
     static void puzzleOneEvaluate() {
         try {
-            File inputFile = new File("Day1/InputDay1-Puzzle1.txt");
+            File inputFile = new File("InputOfPuzzle/InputDay1-Puzzle1.txt");
             Scanner sc = new Scanner(inputFile);
             int highestValue = 0, currentValue = 0;
             while (sc.hasNext()) {
@@ -30,7 +30,7 @@ public class DayOneACC {
 
     static void puzzleTwoEvaluate() {
         try {
-            File inputFile = new File("Day1/InputDay1-Puzzle2.txt");
+            File inputFile = new File("InputOfPuzzle/InputDay1-Puzzle2.txt");
             Scanner sc = new Scanner(inputFile);
             int currentValue = 0;
             List<Integer> calorieList = new ArrayList<>();
