@@ -17,9 +17,10 @@ public class DayThreeACC {
     }
 
     static void puzzleOneEvaluate() {
+        Scanner sc = null;
         try {
             File inputFile = new File("InputOfPuzzle/InputDay3-Puzzle1.txt");
-            Scanner sc = new Scanner(inputFile);
+            sc = new Scanner(inputFile);
             String firstCompartment, secondCompartment;
             int currentTotalScore = 0;
             while (sc.hasNext()) {
@@ -32,12 +33,16 @@ public class DayThreeACC {
         } catch (Exception e) {
             System.out.println("Error while processing the input of Puzzle 1");
         }
+        finally {
+            sc.close();
+        }
     }
 
     static void puzzleTwoEvaluate() {
+        Scanner sc = null;
         try {
             File inputFile = new File("InputOfPuzzle/InputDay3-Puzzle2.txt");
-            Scanner sc = new Scanner(inputFile);
+            sc = new Scanner(inputFile);
             List<String> groupOfLines = new ArrayList<>();
             int lineCounterOf3 =0;
             int currentTotalScore = 0;
@@ -54,6 +59,9 @@ public class DayThreeACC {
             System.out.println(currentTotalScore);
         } catch (Exception e) {
             System.out.println("Error while processing the input of Puzzle 1");
+        }
+        finally {
+            sc.close();
         }
     }
 
