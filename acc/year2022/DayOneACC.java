@@ -1,4 +1,4 @@
-package acc2022;
+package acc.year2022;
 
 import java.util.*;
 import java.io.*;
