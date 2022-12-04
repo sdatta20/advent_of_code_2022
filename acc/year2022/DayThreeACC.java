@@ -17,11 +17,11 @@ public class DayThreeACC {
     }
 
     static void puzzleOneEvaluate() {
-        Scanner sc = null;
-        try {
-            File inputFile = new File("InputOfPuzzle/InputDay3-Puzzle1.txt");
-            sc = new Scanner(inputFile);
-            String firstCompartment, secondCompartment;
+        File inputFile = new File("InputOfPuzzle/InputDay3-Puzzle1.txt");
+        try (
+                Scanner sc = new Scanner(inputFile)){
+            String firstCompartment;
+            String secondCompartment;
             int currentTotalScore = 0;
             while (sc.hasNext()) {
                 String line = sc.nextLine();
@@ -33,16 +33,13 @@ public class DayThreeACC {
         } catch (Exception e) {
             System.out.println("Error while processing the input of Puzzle 1");
         }
-        finally {
-            sc.close();
-        }
+
     }
 
     static void puzzleTwoEvaluate() {
-        Scanner sc = null;
-        try {
-            File inputFile = new File("InputOfPuzzle/InputDay3-Puzzle2.txt");
-            sc = new Scanner(inputFile);
+        File inputFile = new File("InputOfPuzzle/InputDay3-Puzzle2.txt");
+        try (
+                Scanner sc = new Scanner(inputFile)){
             List<String> groupOfLines = new ArrayList<>();
             int lineCounterOf3 =0;
             int currentTotalScore = 0;
@@ -58,31 +55,29 @@ public class DayThreeACC {
             }
             System.out.println(currentTotalScore);
         } catch (Exception e) {
-            System.out.println("Error while processing the input of Puzzle 1");
+            System.out.println("Error while processing the input of Puzzle 2");
         }
-        finally {
-            sc.close();
-        }
+
     }
 
     private static  int compareGroupOfLines(List<String> groupOfLines) {
-        List<String> firstList = new ArrayList<String>(Arrays.asList(groupOfLines.get(0).split("")));
-        List<String> secondList = new ArrayList<String>(Arrays.asList(groupOfLines.get(1).split("")));
-        List<String> thirdList = new ArrayList<String>(Arrays.asList(groupOfLines.get(2).split("")));
+        List<String> firstList = new ArrayList<>(Arrays.asList(groupOfLines.get(0).split("")));
+        List<String> secondList = new ArrayList<>(Arrays.asList(groupOfLines.get(1).split("")));
+        List<String> thirdList = new ArrayList<>(Arrays.asList(groupOfLines.get(2).split("")));
         List<String> lettersCommonBetweenFirstTwo = firstList.stream()
-                .filter( str -> secondList.contains(str))
+                .filter( secondList::contains)
                 .collect(Collectors.toList());
         List<String> lettersCommon = lettersCommonBetweenFirstTwo.stream()
-                .filter( str -> thirdList.contains(str))
+                .filter( thirdList::contains)
                 .collect(Collectors.toList());
         return characterIntegerMap.get(lettersCommon.get(0).toCharArray()[0]);
     }
 
     private static int getCommonChars(String firstCompartment, String secondCompartment) {
         try {
-            List<String> firstList = new ArrayList<String>(Arrays.asList(firstCompartment.split("")));
+            List<String> firstList = new ArrayList<>(Arrays.asList(firstCompartment.split("")));
             List<String> lettersCommon = firstList.stream()
-                            .filter( str -> secondCompartment.contains(str))
+                            .filter( secondCompartment::contains)
                                     .collect(Collectors.toList());
             return characterIntegerMap.get(lettersCommon.get(0).toCharArray()[0]);
         } catch (Exception e) {

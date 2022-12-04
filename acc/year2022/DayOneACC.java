@@ -9,11 +9,11 @@ public class DayOneACC {
     }
 
     static void puzzleOneEvaluate() {
-        Scanner sc = null;
-        try {
-            File inputFile = new File("InputOfPuzzle/InputDay1-Puzzle1.txt");
-            sc = new Scanner(inputFile);
-            int highestValue = 0, currentValue = 0;
+        File inputFile = new File("InputOfPuzzle/InputDay1-Puzzle1.txt");
+        try (
+                Scanner sc = new Scanner(inputFile)){
+            int highestValue = 0;
+            int currentValue = 0;
             while (sc.hasNext()) {
                 String line = sc.nextLine();
                 if (line.isBlank()) {
@@ -27,16 +27,13 @@ public class DayOneACC {
         } catch (Exception e) {
             System.out.println("Error while processing the input of Puzzle 1");
         }
-        finally {
-            sc.close();
-        }
+
     }
 
     static void puzzleTwoEvaluate() {
-        Scanner sc = null;
-        try {
-            File inputFile = new File("InputOfPuzzle/InputDay1-Puzzle2.txt");
-            sc = new Scanner(inputFile);
+        File inputFile = new File("InputOfPuzzle/InputDay1-Puzzle1.txt");
+        try (
+                Scanner sc = new Scanner(inputFile)){
             int currentValue = 0;
             List<Integer> calorieList = new ArrayList<>();
             while (sc.hasNext()) {
@@ -54,15 +51,11 @@ public class DayOneACC {
         } catch (Exception e) {
             System.out.println("Error while processing the input of Puzzle 2");
         }
-        finally {
-            sc.close();
-        }
+
     }
 
     static int compareNumbers(int newValue, int oldValue) {
-        if (newValue>oldValue)
-            return newValue;
-        else
-            return oldValue;
+        return Math.max(newValue,oldValue);
+
     }
 }
