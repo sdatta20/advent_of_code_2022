@@ -1,14 +1,22 @@
 package acc.year2022;
 
 import java.io.File;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class DaySixACC {
 
     public static void main(String[] args) {
-
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        System.out.println("StartTime: "+dtf.format(now));
         puzzleOneEvaluate(3);
+        now = LocalDateTime.now();
+        System.out.println("Completion Time of Puzzle 1: "+dtf.format(now));
         puzzleOneEvaluate(13);
+        now = LocalDateTime.now();
+        System.out.println("Completion Time of Puzzle 2: "+dtf.format(now));
 
 
     }
